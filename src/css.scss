@@ -1,0 +1,148 @@
+@layer adl-md-view {
+    @media screen {
+        #viewport {
+            inline-size: 100%;
+            min-block-size: 100%;
+            block-size: 100%;
+            place-self: center;
+            place-content: center;
+            place-items: center;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            padding: 0.5rem;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            inline-size: 100%;
+            block-size: 4rem;
+            min-block-size: 4rem;
+            place-self: stretch;
+            place-content: stretch;
+            place-items: stretch;
+
+            //
+            text-align: start;
+
+            //
+            button {
+                block-size: 100%;
+                inline-size: max-content;
+                padding: 0.5rem;
+            }
+
+            //
+            .row {
+                inline-size: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-basis: stretch;
+                flex-grow: 1;
+
+                //
+                text-align: start;
+                justify-content: start;
+            }
+        }
+
+        main {
+            font-size: 16px;
+            display: flex;
+            inline-size: 100%;
+            align-self: center;
+            flex-grow: 1;
+            flex-basis: stretch;
+            border-radius: 1rem;
+
+            //
+            flex-direction: column;
+            flex-wrap: wrap;
+
+            //
+            place-self: center;
+            place-content: center;
+            place-items: center;
+
+            //
+            justify-content: start;
+
+            //
+            user-select: auto;
+            pointer-events: auto;
+            overflow: auto;
+        }
+
+        #markdown {
+            container-type: inline-size;
+
+            //
+            font-size: 16px;
+            transform-origin: 50% 0%;
+            inline-size: calc(var(--page-width, 210) * 1mm);
+            scale: calc(var(--fit-width, 800) / (var(--page-width, 210) * 3.7795275591));
+            min-block-size: max-content;
+            block-size: 100%;
+            overflow: hidden;
+
+            //
+            border-radius: 1rem;
+
+            //
+            pointer-events: auto;
+            line-height: normal;
+            display: block;
+            user-select: text;
+            text-align: justify;
+
+            //
+            justify-items: start;
+            justify-content: start;
+
+            //
+            padding-inline: 16mm;
+            padding-block: 16mm;
+
+            //
+            :where(*) {
+                pointer-events: auto;
+                text-align: justify;
+                user-select: text;
+            }
+
+            a {
+                user-select: none;
+            }
+
+            //
+            .center {
+                justify-self: center;
+            }
+        }
+    }
+
+    //
+    @media print {
+        body {
+            min-block-size: 100dvb;
+            block-size: 100dvb;
+        }
+
+        #viewport {
+            container-type: inline-size;
+            min-block-size: max-content;
+            inline-size: 100%;
+            block-size: 100%;
+
+            //
+            #markdown {
+                inline-size: 100%;
+                container-type: inline-size;
+                min-block-size: 100%;
+                block-size: max-content;
+                text-align: justify;
+            }
+        }
+    }
+};
