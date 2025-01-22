@@ -5,6 +5,9 @@ import html from "solid-js/html";
 import { hooked } from "./Utils"
 import { marked } from "marked";
 
+// @ts-ignore
+import { observeContentBox } from "/externals/lib/dom.js";
+
 // while: tab.component should be  ()=> html`...`
 export const Workspace = () => {
     const markdown = hooked(null);
@@ -29,6 +32,13 @@ export const Workspace = () => {
     }
 
     //
+    const contentBox = (element)=>{
+        observeContentBox(element, (box)=>{
+            element.style.setProperty("--fit-width", Math.min((box.inlineSize - 64), 1200) || 800);
+        });
+    }
+
+    //
     return html`<>
         <nav>
             <div class="row">
@@ -38,7 +48,7 @@ export const Workspace = () => {
                 
             </div>
         </nav>
-        <main data-print-pass data-scheme="solid" data-theme="light" on:drop=${dropHandle} on:dragover=${dragOverHandle}>
+        <main ref=${contentBox} data-print-pass data-scheme="solid" data-theme="light" on:drop=${dropHandle} on:dragover=${dragOverHandle}>
             <div ref=${markdown} data-print id="markdown" ></div>
         </main>
     </>`;

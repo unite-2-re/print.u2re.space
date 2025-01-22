@@ -119,9 +119,9 @@
             }, {passive: false, capture: true});
 
             // comment to enable native context menu
-            document.documentElement.addEventListener("contextmenu", (ev)=>{
+            /*document.documentElement.addEventListener("contextmenu", (ev)=>{
                 ev.preventDefault();
-            });
+            });*/
 
             //
             if ("virtualKeyboard" in navigator && navigator?.virtualKeyboard) {
@@ -144,7 +144,7 @@
             })();
         </script>
     </head>
-    <body data-theme="light" data-scheme="accent" data-chroma="0.05" data-chroma="1" data-alpha="1" data-highlight="2" style="pointer-events: auto; overflow: hidden;">
+    <body data-theme="light" data-scheme="accent" data-chroma="0.05" data-chroma="1" data-alpha="1" data-highlight="2" style="pointer-events: auto;">
 
         
         <div id="viewport" data-print-pass>
