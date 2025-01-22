@@ -215,6 +215,12 @@ frontend/app/
 ./frontend/app/
 
 #
+frontend/print/*
+frontend/print/
+./frontend/print/*
+./frontend/print/
+
+#
 index/*
 index/
 ./index/*
