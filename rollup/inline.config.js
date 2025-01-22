@@ -118,14 +118,9 @@ export const plugins = [
     createExternal({
         interop: 'auto',
         externals: {
-            frontend: "frontend",
-            externals: "externals",
             dist: "dist"
         },
         externalizeDeps: [
-            "externals", "/externals", "./externals",
-            "frontend/externals", "/frontend/externals", "./frontend/externals",
-            "frontend/" + NAME, "/frontend/" + NAME, "./frontend/" + NAME
         ]
     }),
 ];
@@ -135,9 +130,6 @@ export const rollupOptions = {
     plugins,
     treeshake: 'smallest',
     external: [
-        "externals", "/externals", "./externals",
-        "frontend/externals", "/frontend/externals", "./frontend/externals",
-        "frontend/" + NAME, "/frontend/" + NAME, "./frontend/" + NAME
     ],
     input: "./src/app.ts",
     output: {
@@ -146,23 +138,18 @@ export const rollupOptions = {
         globals: {},
 		format: 'es',
 		name: NAME,
-        dir: './frontend/' + NAME,
+        dir: './frontend/'+NAME+'/',
         sourcemap: 'hidden',
         exports: "auto",
         esModuleInterop: true,
         experimentalMinChunkSize: 500_500,
-        //inlineDynamicImports: true,
+        
         chunkFileNames: '[name].js',
         assetFileNames: 'assets/[name][extname]',
         entryFileNames: NAME + ".js",
-        manualChunks(id) {
-            if (id.includes('node_modules')) {
-                return "modules/" + (id.toString().split('node_modules/')[1].split('/')[0])?.replace?.("@","");
-            };
-            //if (id.endsWith('.ts')) { return null; };
-            //if (id.endsWith('.tsx')) { return null; };
-            //return "chunks/" + id?.toString()?.split("/")?.at(-1)?.replace?.(/\.ts(x?)$/, "")?.replace?.("@","");
-        }
+        
+        // web extensions won't loading by this way
+        inlineDynamicImports: true,
 	}
 };
 

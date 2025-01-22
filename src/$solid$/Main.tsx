@@ -95,11 +95,9 @@ export const provide = async (req: string | Request = "", rw = false) => {
 
 
 
-
 // while: tab.component should be  ()=> html`...`
 export const Workspace = () => {
     const markdown = hooked(null);
-
 
     //
     const requestFileAccess = async (dest = "/user/temp/", current?: any)=>{
@@ -123,15 +121,18 @@ export const Workspace = () => {
         });
     }
 
+
     //
     const dragOverHandle = (ev)=>{
         ev?.preventDefault?.();
     }
 
     //
-    const loadMarkdown = async (file)=>{
+    const loadMarkdown = async (file: string|File|Blob|Response)=>{
         renderMarkdown(file);
-        (await provide("/user/temp/view.md", true) as any)?.write?.(file);
+        if (file instanceof File || file instanceof Blob) {
+            (await provide("/user/temp/view.md", true) as any)?.write?.(file);
+        };
     }
 
     //
@@ -142,8 +143,18 @@ export const Workspace = () => {
     }
 
     //
-    const renderMarkdown = (file: File)=>{
-        file?.text()?.then?.((doc)=>markdown.innerHTML = marked(doc) || markdown.innerHTML);
+    document.addEventListener("ext-set-md", (ev)=>{
+        loadMarkdown(ev?.detail?.doc);
+    });
+
+    //
+    const renderMarkdown = (file: string|File|Blob|Response)=>{
+        if (typeof file == "string") {
+            markdown.innerHTML = marked(file) || markdown.innerHTML;
+        } else 
+        if (file instanceof File || file instanceof Blob || file instanceof Response) {
+            file?.text()?.then?.((doc)=>markdown.innerHTML = marked(doc) || markdown.innerHTML);
+        }
     }
 
     //

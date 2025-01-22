@@ -1,4 +1,6 @@
 @layer adl-md-view {
+
+    //
     @media screen {
         #viewport {
             inline-size: 100%;
@@ -111,7 +113,6 @@
             //
             :where(*) {
                 pointer-events: auto;
-                text-align: justify;
                 user-select: text;
             }
 

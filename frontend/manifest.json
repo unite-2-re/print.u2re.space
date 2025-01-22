@@ -1,0 +1,42 @@
+{
+    "manifest_version": 3,
+    "name": "print-md",
+    "short_name": "print-md",
+    "version": "0.0.1",
+    "start_url": "/",
+    "author": "U2RE",
+    "id": "/",
+    "scope": "/",
+    "display": "fullscreen",
+    "display_override": ["window-controls-overlay", "borderless", "fullscreen", "standalone"],
+    "description": "A readable Hacker News app.",
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "orientation": "any",
+    "categories": ["personalization", "education", "entertainment", "lifestyle"],
+    "permissions": [
+        "window-management",
+        "fullscreen",
+        "theme",
+        "storage",
+        "scripting"
+    ],
+    "related_applications": [],
+    "content_scripts": [{
+        "matches": ["*://*/*", "file:///*"],
+        "js": ["viewer.mjs"],
+        "run-at": "document_idle"
+    }],
+    "incognito": "split",
+    "content_security_policy": {
+        "extension_page": "default-src 'self' blob: data:; img-src 'self' * blob: data:; style-src 'self' 'unsafe-inline' blob: data:; script-src 'self' 'unsafe-inline' blob: data:; worker-src 'self' blob:* data:*;"
+    },
+    "background" : {"service_worker": "extension_sw.mjs"},
+    "web_accessible_resources": [{
+        "matches": ["<all_urls>"],
+        "resources": ["/app/*", "/externals/*"]
+    }],
+    "host_permissions": ["file:///*"],
+    "optional_host_permissions": ["*://*/"],
+    "optional_permissions": ["webRequest"]
+}
