@@ -2,6 +2,9 @@
 import { renderInPage } from "./$solid$/Main";
 import CSS from "./css";
 
+// @ts-ignore
+import { observeBySelector } from "/externals/lib/dom.js";
+
 //
 export const initialize = async (root)=>{
 
@@ -65,6 +68,43 @@ export const initialize = async (root)=>{
     //
     renderInPage(root);
 }
+
+//
+const whenError = (ev)=>{
+    const element = ev?.target;
+    if (element?.matches?.("img:not(.error)")) {
+        element?.classList?.add("error");
+    }
+}
+
+//
+const whenLoad = (ev)=>{
+    const element = ev?.target;
+    if (element?.matches?.("img.error")) {
+        element?.classList?.remove("error");
+    }
+}
+
+//
+document.documentElement.addEventListener("error", whenError);
+
+//
+observeBySelector(document.documentElement, "img:not(.error)", (mut)=>{
+    mut?.addedNodes?.forEach?.((el)=>{
+        if (!el.complete) { el?.classList?.add("error"); };
+        el?.addEventListener?.("error", whenError);
+        el?.addEventListener?.("load", whenLoad);
+    });
+});
+
+//
+observeBySelector(document.documentElement, "img.error, img", (mut)=>{
+    mut?.addedNodes?.forEach?.((el)=>{
+        if (el.complete) { el?.classList?.remove("error"); };
+        el?.addEventListener?.("error", whenError);
+        el?.addEventListener?.("load", whenLoad);
+    });
+});
 
 //
 export default initialize;
