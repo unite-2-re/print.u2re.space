@@ -154,7 +154,7 @@ export const rollupOptions = {
         //inlineDynamicImports: true,
         chunkFileNames: '[name].js',
         assetFileNames: 'assets/[name][extname]',
-        entryFileNames: NAME + ".js",
+        entryFileNames: "app.js",
         manualChunks(id) {
             if (id.includes('node_modules')) {
                 return "modules/" + (id.toString().split('node_modules/')[1].split('/')[0])?.replace?.("@","");

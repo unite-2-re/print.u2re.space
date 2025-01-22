@@ -2,7 +2,7 @@
 
     //
     @media screen {
-        #viewport {
+        #app {
             inline-size: 100%;
             min-block-size: 100%;
             block-size: 100%;
@@ -15,6 +15,19 @@
             padding: 0.5rem;
         }
 
+        #viewport {
+            inline-size: 100%;
+            min-block-size: 100%;
+            block-size: 100%;
+            place-self: center;
+            place-content: center;
+            place-items: center;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            padding: 0rem;
+        }
+
         nav {
             display: flex;
             flex-direction: column;
@@ -24,6 +37,7 @@
             place-self: stretch;
             place-content: stretch;
             place-items: stretch;
+            background-color: transparent;
 
             //
             text-align: start;
@@ -50,6 +64,7 @@
                 //
                 text-align: start;
                 justify-content: start;
+                background-color: transparent;
             }
         }
 
@@ -60,7 +75,8 @@
             align-self: center;
             flex-grow: 1;
             flex-basis: stretch;
-            border-radius: 1rem;
+            border-radius: 0.5rem;
+            pointer-events: auto;
 
             //
             flex-direction: column;
@@ -78,6 +94,9 @@
             user-select: auto;
             pointer-events: auto;
             overflow: auto;
+
+            //
+            scrollbar-color: var(--rv-color, currentColor) var(--rv-bg-color, currentColor);
         }
 
         #markdown {
@@ -93,7 +112,7 @@
             overflow: hidden;
 
             //
-            border-radius: 1rem;
+            border-radius: 0.5rem;
 
             //
             pointer-events: auto;

@@ -173,7 +173,7 @@ export const Workspace = () => {
     }
 
     //
-    return html`<>
+    return html`<div id="app" data-theme="light" data-scheme="solid" data-chroma="0.05" data-chroma="1" data-alpha="1" data-highlight="2" style="pointer-events: auto;" data-print-pass>
         <nav>
             <div class="row">
                 <button data-highlight="2" data-highlight-hover="3" class="open-file" on:click=${()=>requestFileAccess()}><ui-icon icon="notebook-text"></ui-icon></button>
@@ -185,7 +185,7 @@ export const Workspace = () => {
         <main ref=${contentBox} data-print-pass data-scheme="solid" data-theme="light" on:drop=${dropHandle} on:dragover=${dragOverHandle}>
             <div ref=${preload} ref=${markdown} data-print id="markdown" ></div>
         </main>
-    </>`;
+    </div>`;
 };
 
 //
