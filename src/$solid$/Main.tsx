@@ -148,12 +148,22 @@ export const Workspace = () => {
     });
 
     //
+    let once = false;
+
+    //
+    const setHTML = async (doc: string|Promise<string> = "")=>{
+        markdown.innerHTML = (await doc) || markdown.innerHTML;
+        if (!once) document.dispatchEvent(new CustomEvent("ext-ready", {}));
+        once = true;
+    }
+
+    //
     const renderMarkdown = (file: string|File|Blob|Response)=>{
         if (typeof file == "string") {
-            markdown.innerHTML = marked(file) || markdown.innerHTML;
+            setHTML(marked(file));
         } else 
         if (file instanceof File || file instanceof Blob || file instanceof Response) {
-            file?.text()?.then?.((doc)=>markdown.innerHTML = marked(doc) || markdown.innerHTML);
+            file?.text()?.then?.((doc)=>setHTML(marked(doc)));
         }
     }
 
@@ -168,7 +178,7 @@ export const Workspace = () => {
     const preload = ()=>{
         requestIdleCallback(async ()=>{
             const file: any = await provide("/user/temp/view.md");
-            if (file) renderMarkdown(file);
+            if (file) { renderMarkdown(file); } else { setHTML(""); };
         });
     }
 
