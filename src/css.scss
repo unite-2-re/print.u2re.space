@@ -85,9 +85,11 @@
     
                 //
                 scrollbar-color: var(--rv-color, currentColor) var(--rv-bg-color, currentColor);
+                touch-action: pan-y; 
             }
     
             #markdown {
+                touch-action: pan-y; 
                 container-type: inline-size;
     
                 //
@@ -104,7 +106,7 @@
                 border-radius: 0.5rem;
     
                 //
-                pointer-events: auto;
+                pointer-events: none;
                 line-height: normal;
                 display: block;
                 user-select: text;
@@ -120,6 +122,7 @@
     
                 //
                 :where(*) {
+                    touch-action: pan-y;
                     pointer-events: auto;
                     user-select: text;
                 }
