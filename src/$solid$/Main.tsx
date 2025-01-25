@@ -96,7 +96,7 @@ export const provide = async (req: string | Request = "", rw = false) => {
 
 
 // while: tab.component should be  ()=> html`...`
-export const Workspace = () => {
+export const PrintApp = () => {
     const markdown = hooked(null);
 
     //
@@ -183,7 +183,8 @@ export const Workspace = () => {
     }
 
     //
-    return html`<div id="app" data-theme="light" data-scheme="solid" data-chroma="0.05" data-chroma="1" data-alpha="1" data-highlight="2" style="pointer-events: auto;" data-print-pass>
+    /*  data-theme="light" data-scheme="solid" data-chroma="0.05" data-chroma="1" data-alpha="1" data-highlight="2" */
+    return html`<div class="adl-main" id="print-app" style="pointer-events: auto; background-color: transparent;" data-print-pass>
         <nav>
             <div class="row">
                 <button data-highlight="2" data-highlight-hover="3" class="open-file" on:click=${()=>requestFileAccess()}><ui-icon icon="notebook-text"></ui-icon></button>
@@ -199,7 +200,7 @@ export const Workspace = () => {
 };
 
 //
-export default Workspace;
+export default PrintApp;
 export const renderInPage = (root: HTMLElement/*, tasks: any*/)=>{
-    render(()=>html`<${Workspace}><//>`, root);
+    render(()=>html`<${PrintApp}><//>`, root);
 }

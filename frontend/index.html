@@ -73,6 +73,45 @@
                     transition-behavior: allow-discrete;
                     interpolate-size: allow-keywords;
                 }
+
+                /* */
+                @media screen {
+                    #viewport { 
+                        & {
+                            background-color: transparent;
+                            overflow: hidden;
+                            inline-size: 100%;
+                            block-size: 100%;
+                            padding: 0rem;
+                        };
+                        & > * { background-color: transparent; };
+                    };
+                };
+
+                /* */
+                @media print {
+                    body {
+                        min-block-size: 100dvb;
+                        block-size: 100dvb;
+                    };
+
+                    #viewport {
+                        & {
+                            background-color: transparent;
+                            container-type: inline-size;
+                            min-block-size: max-content;
+                            inline-size: 100%;
+                            block-size: 100%;
+                        };
+                        #markdown {
+                            inline-size: 100%;
+                            container-type: inline-size;
+                            min-block-size: 100%;
+                            block-size: max-content;
+                            text-align: justify;
+                        };
+                    };
+                };
             }
         </style>
 
