@@ -107,4 +107,5 @@ observeBySelector(document.documentElement, "img.error, img", (mut)=>{
 });
 
 //
+export { renderInPage };
 export default initialize;
