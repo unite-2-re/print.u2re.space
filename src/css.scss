@@ -57,6 +57,7 @@
             }
     
             main {
+                contain: strict;
                 font-size: 16px;
                 display: flex;
                 inline-size: 100%;
