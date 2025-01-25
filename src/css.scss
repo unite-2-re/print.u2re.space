@@ -93,13 +93,14 @@
                 //
                 font-size: 16px;
                 transform-origin: 50% 0%;
-                inline-size: calc(var(--page-width, 210) * 1mm);
+                inline-size: min(calc(var(--page-width, 210) * 1mm), 100%);
                 scale: calc(var(--fit-width, 800) / (var(--page-width, 210) * 3.7795275591));
                 min-block-size: max-content;
                 block-size: 100%;
                 overflow: hidden;
     
                 //
+                box-sizing: border-box;
                 border-radius: 0.5rem;
     
                 //
