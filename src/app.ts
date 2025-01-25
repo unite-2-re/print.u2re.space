@@ -1,5 +1,5 @@
 //
-import { renderInPage } from "./$solid$/Main";
+import { renderInPage as $renderInPage } from "./$solid$/Main";
 import CSS from "./css";
 
 // @ts-ignore
@@ -66,7 +66,7 @@ export const initialize = async (root)=>{
     ]);
 
     //
-    renderInPage(root);
+    $renderInPage(root);
 }
 
 //
@@ -107,5 +107,6 @@ observeBySelector(document.documentElement, "img.error, img", (mut)=>{
 });
 
 //
+const renderInPage = (doc)=>{ CSS?.(doc); $renderInPage(doc); };
 export { renderInPage };
 export default initialize;
