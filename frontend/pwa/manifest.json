@@ -1,10 +1,10 @@
 {
     "manifest_version": 3,
-    "name": "web.core",
-    "short_name": "web.core",
+    "name": "print.u2re.space",
+    "short_name": "print.u2re.space",
     "version": "canary",
     "start_url": "/frontend/",
-    "author": "U2RE",
+    "author": "u2re-dev",
     "id": "/",
     "scope": "/",
     "display": "fullscreen",
@@ -14,9 +14,9 @@
         "fullscreen",
         "standalone"
     ],
-    "description": "NTP PWA Application.",
-    "theme_color": "#000000",
-    "background_color": "#000000",
+    "description": "U2RE Print App",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
     "orientation": "any",
     "categories": [
         "personalization",
@@ -25,35 +25,12 @@
         "lifestyle"
     ],
     "permissions": ["window-management", "fullscreen", "theme"],
-    "icons": [
-        {
-            "src": "../assets/icons/home/512c.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        },
-        {
-            "src": "../assets/icons/home/512x.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "../assets/icons/home/512b.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "badge"
-        }
-    ],
-    "related_applications": [
-        { "platform": "play", "id": "*", "url": "*://*/*" },
-        { "platform": "itunes", "id": "*", "url": "*://*/*" },
-        { "platform": "windows", "id": "*", "url": "*://*/*" },
-        { "platform": "chrome_web_store", "id": "*", "url": "*://*/*" },
-        { "platform": "chromeos_play", "id": "*", "url": "*://*/*" },
-        { "platform": "webapp", "id": "*", "url": "*://*/*" },
-        { "platform": "f-droid", "id": "*", "url": "*://*/*" },
-        { "platform": "amazon", "id": "*", "url": "*://*/*" }
-    ],
+    "icons": [{
+        "src": "../assets/icons/home/512x.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+    }],
     "incognito": "split",
     "default_locale": "en"
 }

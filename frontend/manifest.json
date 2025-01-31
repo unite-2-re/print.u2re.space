@@ -1,33 +1,27 @@
 {
     "manifest_version": 3,
-    "name": "print-md",
-    "short_name": "print-md",
-    "version": "0.0.1",
+    "name": "print.u2re.space",
+    "short_name": "print.u2re.space",
+    "version": "canary",
     "start_url": "/",
-    "author": "U2RE",
+    "author": "u2re-dev",
     "id": "/",
     "scope": "/",
     "display": "fullscreen",
     "display_override": ["window-controls-overlay", "borderless", "fullscreen", "standalone"],
-    "description": "A readable Hacker News app.",
-    "theme_color": "#000000",
-    "background_color": "#000000",
+    "description": "U2RE Print App",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
     "orientation": "any",
     "categories": ["personalization", "education", "entertainment", "lifestyle"],
-    "permissions": [
-        "window-management",
-        "fullscreen",
-        "theme",
-        "storage",
-        "scripting"
-    ],
+    "permissions": ["window-management", "fullscreen", "theme", "storage", "scripting"],
     "related_applications": [],
     "content_scripts": [{
         "matches": ["https://print.u2re.space/*"],
         "js": ["inject.mjs"],
         "run-at": "document_end"
     }, {
-        "matches": ["*://*/*", "file:///*"],
+        "matches": ["*://*/*.md", "file:///*.md"],
         "js": ["hooker.mjs"],
         "run-at": "document_idle"
     }],
@@ -38,9 +32,9 @@
     "background" : {"service_worker": "holder.mjs"},
     "web_accessible_resources": [{
         "matches": ["<all_urls>"],
-        "resources": ["/app/*", "/externals/*"]
+        "resources": ["/app/*", "/print/*", "/externals/*"]
     }],
-    "host_permissions": ["file:///*"],
-    "optional_host_permissions": ["*://*/"],
+    "host_permissions": ["file:///*.md"],
+    "optional_host_permissions": ["*://*/*.md"],
     "optional_permissions": ["webRequest"]
 }
